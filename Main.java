@@ -1,57 +1,63 @@
 class Exam{
-     String message;
-     String period;
-     String level;
-     double price = 0.0;
-     boolean status = false;
+    String message;
+    double price;
+    boolean status;
 
+    // Constructor assigning "Good luck" to message
     public Exam() {
         this.message = "Good luck";
     }
 
-    public Exam(String period, String level){
-        this.period = period;
-        this.level = level;
-
+    // Create an empty overloaded constructor for the Exam class with two (2) String parameters named period and level.
+    public Exam(String period, String level) {
+        // Empty constructor body as per the instructions
     }
 
-    public double getPrice(double price){
-        return this.price;
+    // Declare a double-type accessor named getPrice that returns the value of price.
+    public double getPrice() {
+        return price;
     }
 
-    public boolean isFinished(boolean status){
-        return this.status;
+    // Accessor for status
+    public boolean isFinished() {
+        return status;
     }
 }
 
-class Midterms extends Exam {
-
-    public Midterms() {
-        super();
-        System.out.println("Midterms has started");
+// Declare a class named Midterm that inherits from the class named Exam
+class Midterm extends Exam {
+    // Constructor for Midterm
+    public Midterm() {
+        super(); // Call parent class constructor
+        System.out.println("Exam has started.");
     }
-
 }
 
-class Quiz {
+// Class to demonstrate multiple levels of inheritance
+class Essay extends Midterm {
+    // No specific implementation needed for now
 }
 
-class Essay extends Quiz {
-    
+// Another example showing inheritance
+class Quiz extends Essay {
+    // No specific implementation needed for now
 }
 
-// Main class to test the code
+// Demonstrating inheritance between Quiz and Essay
+// Statement: `class Quiz extends Essay { }`
+
+// Main class to test
 public class Main {
     public static void main(String[] args) {
-        // Step 1: Create an instance of Exam
+        // Create an instance of Midterm to test constructors
+        Midterm midterm = new Midterm();
+
+        // Testing accessor methods
         Exam exam = new Exam();
-        System.out.println("Message from Exam: " + exam.message);
+        exam.price = 100.0;
+        exam.status = true;
 
-        // Step 7: Create an instance of Midterm and see the constructor print
-        Midterms midterm = new Midterms();
-
-        // Step 8: Inheritance between Quiz and Essay
-        Essay essayFromQuiz = new Essay();
-        System.out.println("Essay class is a derived class from Base class Quiz.");
+        System.out.println("Price: " + exam.getPrice());
+        System.out.println("Is Finished: " + exam.isFinished());
     }
-}
+                           }
